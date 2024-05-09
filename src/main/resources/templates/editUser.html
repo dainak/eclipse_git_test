@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<h1>顧客更新</h1>
+	<form th:action="@{/users/{id}/edit(id=${id})}" method="post">
+		<table border="1">
+			<tr>
+				<th>顧客ID</th>
+				<td>
+					<span th:text="${id}"}></span>
+				</td>
+			</tr>
+			<tr>
+				<th>名前</th>
+				<td>
+					<input type="text" name="name">
+				</td>
+			</tr>
+			<tr>
+				<th>メールアドレス</th>
+				<td>
+					<input type="text" name="email">
+				</td>
+			</tr>
+			<tr>
+				<th>パスワード</th>
+				<td>
+					<input type="text" name="password">
+				</td>
+			</tr>
+		</table>
+		<button>更新</button>
+	</form>
+</body>
+
+</html>

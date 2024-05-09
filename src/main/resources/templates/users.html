@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<h1>顧客一覧</h1>
+	こんにちは、[[${@account.name}]]さん
+	<form action="/users" method="get">
+		<input type="text" name="keyword" placeholder="名前" th:value="${keyword}">
+		<button>検索</button>
+	</form>
+
+	<table border="1">
+		<tr>
+			<th>顧客ID</th>
+			<th>名前</th>
+			<th>メールアドレス</th>
+			<th>パスワード</th>
+			<th>更新</th>
+			<th>削除</th>
+		</tr>
+		<tr th:each="user:${users}">
+			<td th:text="${user.id}"></td>
+			<td th:text="${user.name}"></td>
+			<td th:text="${user.email}"></td>
+			<td th:text="${user.password}"></td>
+			<td>
+				<form th:action="@{/users/{id}/edit(id=${user.id})}" method="get">
+					<button>更新</button>
+				</form>
+			</td>
+			<td>
+				<form th:action="@{/users/{id}/delete(id=${user.id})}" method="post">
+					<button>削除</button>
+				</form>
+			</td>
+		</tr>
+	</table>
+	<a href="/users/add">新規登録</a><br>
+	<a href="/logout">ログアウト</a>
+</body>
+
+</html>
